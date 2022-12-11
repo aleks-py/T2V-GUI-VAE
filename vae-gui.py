@@ -10,11 +10,10 @@ import plotly.graph_objs as go
 import cv2
 from PIL import Image
 import pickle
+import urllib.request
 
-file = open('/data/frey_faces_all_latents_matrix.pkl', 'rb')
-all_faces = pickle.load(file)
-file.close()
-pil_img = Image.open('/data/decoder.png')
+all_faces = pickle.load(urllib.request.urlopen('https://drive.google.com/uc?export=download&id=1bVzckDy_hUbxnsSVDfCezi-qpJ_Fi4F9'))
+pil_img = Image.open(urllib.request.urlopen('https://drive.google.com/uc?export=download&id=1UbSlpXaJiHw2uwub85bHWj0faH_ESGnE'))
 
 app = Dash(__name__)
 server = app.server
