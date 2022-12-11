@@ -4,13 +4,16 @@ import dash_daq as daq
 from dash import html
 # from jupyter_dash import JupyterDash
 from dash import dcc
-import torch
+# import torch
 import numpy as np
 import plotly.graph_objs as go
 import cv2
 from PIL import Image
+import pickle
 
-all_faces = torch.load('/data/frey_faces_all_latents_matrix.pt')
+file = open('/data/frey_faces_all_latents_matrix.pkl', 'rb')
+all_faces = pickle.load(file)
+file.close()
 pil_img = Image.open('/data/decoder.png')
 
 app = Dash(__name__)
